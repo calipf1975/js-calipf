@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2_1</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        let a = 1, b = 1, c, d; c = ++a;
+        alert(c); // с = 1 + a; a = 1 + a; ответ:c = 2, a = 2;
+        // пример 2
+        d = b++;
+        alert(d);// d = b; b = b + 1; ответ:d = 1, b = 2;
+        // пример 3
+        c = 2 + ++a;
+        alert(c); // c = 2 + 1 + a; a = 1 + 2; ответ:c = 5, a = 3;
+        // пример 4
+        d = 2 + b++;
+        alert(d); // d = 2 + b; b = b + 1;ответ:d = 4, b = 3;
+        alert(a); //3
+        alert(b); //3
+    </script>
+    
+</body>
+</html>
