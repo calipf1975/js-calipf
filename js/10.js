@@ -7,6 +7,13 @@ const products = [
 ];
 
 
+// const findfotto = products.filter(function (fotto) {
+//     return fotto.photos !== undefined && fotto.photos.length > 0 ;
+// });
+// console.log(findfotto);
+const findfotto = products.filter(fotto => fotto.photos !== undefined && fotto.photos.length > 0);
+console.log(findfotto);
+
     
 
 
