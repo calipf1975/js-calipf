@@ -20,28 +20,90 @@
     
 //     который будет назначать свойству highlighted значение true.
 'use strict';
+1.1
 function post(author, text, date) {
     this.author = author;
     this.text = text;
     this.date = date;
 }
-post.prototype.edit = function() {
-    console.log(this.author, this.text, this.date);
+post.prototype.edit = function(text) {
+    this.text = text;
 };
-let a = new post(1 ,2, 5,);
-a.edit();
-let b = new post(2, 3, 5,);
-b.edit();
+function AttachedPost(author, text, date){
+    post.call(this, author, text, date);
+    this.highlighted = false;
+}
+AttachedPost.prototype = Object.create(post.prototype);
+AttachedPost.prototype.constructor = AttachedPost;
 
+AttachedPost.prototype.makeTextHighlighted = function() {
+    this.highlighted = true;
+};
+const attached1 = new AttachedPost('admin', 'lorem2', new Date());
+console.log(attached1);
+attached1.makeTextHighlighted();
+attached1.edit('hghghgh');
+console.log(attached1);
+1.2
 class Post {
     constructor(author, text, date) {
         this.author = author;
         this.text = text;
         this.date = date;
-    
+    }
+    edit(text) {
+        this.text = text;
+    }
+
 }
+class AttachedPost extends Post {
+    constructor(author,text,date) {
+        super(author, text, date);
+        this.highlighted = false;
+    }
+    makeTextHighlighted() {
+        this.highlighted = true;
+    }
 }
-let a = new Post(1 ,2, 5,);
-console.log(a);
-let b = new Post(2, 9, 111,);
-console.log(b);
+    const attached1 = new AttachedPost('admin', 'lorem2', new Date());
+    console.log(attached1);
+    attached1.makeTextHighlighted();
+    attached1.edit('hghghgh');
+    console.log(attached1);
+
+
+
+2.1
+
+function Product(name, price) {
+    this.name = name;
+    this.price = price;
+}
+Product.prototype.make25PercentDiscount = function() {
+    this.price = this.price - (this.price / 100 * 25);
+    this.name = this.name + '  мой';
+
+};
+let Product1 = new Product('товар1', 100,);
+let Product2 = new Product('товар2', 300,);
+Product1.make25PercentDiscount();
+Product2.make25PercentDiscount();
+console.log(Product1);
+console.log(Product2);
+2.2
+class Product {
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;
+    }
+    make25PercentDiscount() {
+        this.price = this.price - (this.price / 100 * 25);
+        this.name = this.name + '  мой';
+    }
+}
+    let Product1 = new Product('товар1', 100,);
+    let Product2 = new Product('товар2', 300,);
+    Product1.make25PercentDiscount();
+    Product2.make25PercentDiscount();
+    console.log(Product1);
+    console.log(Product2);
